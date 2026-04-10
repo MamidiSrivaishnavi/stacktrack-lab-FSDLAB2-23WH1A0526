@@ -1,22 +1,16 @@
-import React from 'react';
+//import React from 'react';
 import Home from './pages/Home';
-import {BrowserRouter as Routes, Route} from 'react-route-dom'
-import A from "./tasksLists';
-import B from "./tasksDetails";
+import {BrowserRouter, Routes, Route} from "react-route-dom";
+import QuestionPage from "./pages/QuestionPage";
 
 function App() {
-  <BrowserRouter>
-    <Routes>
-      <Route path = "/" element={<A />} />
-      <Route path = "/tasks/:id" element={<B />} />
-    </Routes>
-  </BrowserRouter>
   return (
-    <div>
-      <Home />
-
-      {<A />}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path = "/" element = {<Home/>}/>
+        <Route path = "/tasks/:status" element={<QuestionPage/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

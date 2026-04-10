@@ -1,36 +1,34 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import {useParams, Link} from 'react-router-dom';
+import {useParams} from "react-router-dom";
 
 // TODO: Import any API functions you need from '../../api/client'
 // Example: import { get, post } from '../../api/client';
 
 function QuestionComponent() {
   // TODO: Define state variables needed for your question set
-  const {id} = useParams();
-  const [d, setD] = useState([null]);
+  const {status} = useParams();
+  const [d, setD] = useState([]);
 
   // TODO: Implement data fetching inside a useEffect hook
   useEffect(() => {
-    fetch('https://bvrithcloud.com/api/tasks?status=pending'),
-    {method : 'GET',
-      header : {"x-student-id" : "23WH1A0526"}}
+    fetch(`http://bvrithcloud.com/api/tasks?status=${status}`,
+      {headers : {"x-student-id" : "23WH1A0526"}})
       .then(r => r.json())
-      .then(setD), [id]
-  })
+      .then(setD);
+  }, [status]);
 
   // TODO: Implement any event handlers required by your question set
   
 
   return (
     <div>
-      {d.title}
-      <p>QuestionComponent placeholder — implement your assigned question set here.</p>
-      <div>({d._id})</div>
-      <div>({d.title})</div>
-      <div>({d.description})</div>
-      <div>({d.status})</div>
-      <Link to ="/"> Go Back </Link>
+      <h2>{status}Tasks</h2>
+      {d.map(x => (
+        <div key = {x._id}>
+          {x.title} - {x.status}
+        </div>
+      ))}
     </div>
   );
 }
