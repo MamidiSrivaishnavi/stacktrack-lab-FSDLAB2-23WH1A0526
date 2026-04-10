@@ -15,7 +15,7 @@ function QuestionComponent() {
     fetch(`http://bvrithcloud.com/api/tasks?status=${status}`,
       {headers : {"x-student-id" : "23WH1A0526"}})
       .then(r => r.json())
-      .then(setD);
+      .then(res => setD(res.data || res));
   }, [status]);
 
   // TODO: Implement any event handlers required by your question set
