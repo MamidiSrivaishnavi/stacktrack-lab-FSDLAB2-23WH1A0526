@@ -6,9 +6,9 @@ import QuestionPage from "./pages/QuestionPage";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
+      <Routes> 
         <Route path = "/" element = {<Home/>}/>
-        <Route path = "/tasks/:status" element={<QuestionPage/>}/>
+        <Route path = "/tasks/:status" element = {<QuestionPage/>}/>
       </Routes>
     </BrowserRouter>
   );
